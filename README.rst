@@ -15,13 +15,17 @@ Usage
 =====
 ::
 
-    $ python dict.py {word}
-    $ ./dict.py {word}
+    $ python dict.py {word} {word} ...
+    $ ./dict.py {word} {word} ..
     
     #   @word : a word you want to search
     # 
     #   [!] please use `"` when the word contains space(` `) 
     #       like "attend to"
+
+    $ ./dict.py -v {word} {word} ...
+    #   [!] show all information.
+
 
 Example
 +++++++
