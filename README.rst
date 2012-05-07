@@ -20,7 +20,7 @@ Usage
     
     #   @word : a word you want to search
     # 
-    #   [!] please useing `"` when the word contains space(` `) 
+    #   [!] please use `"` when the word contains space(` `) 
     #       like "attend to"
 
 Example
