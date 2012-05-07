@@ -7,6 +7,11 @@ import bs4
 class YahooDictAPI:
     
     def __init__(self,word,space2add=True,url_prefix='http://tw.dictionary.yahoo.com/dictionary?p='):
+        """
+            @word : a word want to search.
+            @space2add : replace ` ` with `+` for URL.
+            @url_prefix : [default] i think you needn't change it.
+        """
         self.request_url = url_prefix
 
         if space2add :
@@ -40,6 +45,9 @@ class YahooDictAPI:
             self.defition = self.get_defition()
 
     def found(self):
+        """
+            return False,if no word be found.
+        """
         return not "zrpmsg" in str(self.msg)
 
     def get_pron(self):
@@ -66,7 +74,7 @@ class YahooDictAPI:
         return self.easy_fetch_a("variation")
 
     def get_defition(self):
-        """
+        """  
             [
                 {
                     "caption":caption,
@@ -77,9 +85,10 @@ class YahooDictAPI:
         """
         defition = self.soup.find_all(attrs={"class":"def clr nobr"})
         
-        out_list = list() 
+        out_list = list()
         for d in defition:
             dd = dict()
+
             if d.find(attrs={"class":"caption"}).contents :
                 dd["caption"] = d.find(attrs={"class":"caption"}).contents[0]
                 dd["interpret"] = list()
@@ -92,11 +101,12 @@ class YahooDictAPI:
                     out = ""
                     for e in  ex.contents:
                         out += unicode(e)
-                    out = out.replace("<b>","").replace("</b>","")
-                    outs = out.split("\n")
+                    out = out.replace("<b>","").replace("</b>","")    # clean <b> </b> tag
+                    outs = out.split("\n")                            # seperate : english,chinese
                     inte[1].append((outs[0],outs[1]))
 
                 dd["interpret"].append(inte)
+
             out_list.append(dd)
         return out_list
 
@@ -118,6 +128,9 @@ class YahooDictAPI:
             return li
         return None
 
+"""
+    This is for testing.
+"""
 if __name__ == "__main__":
     d = YahooDictAPI('attend')
     print d.summary_desc

@@ -33,3 +33,22 @@ Example
     $ python dict.py "attend to"
 
 
+About API (yahdict.py)
+======================
+
+Field
+++++++
+  - YahooDictAPI.summary
+  - YahooDictAPI.summary_desc
+  - YahooDictAPI.summary_pron
+  - YahooDictAPI.summary_related
+  - YahooDictAPI.summary_synonym
+  - YahooDictAPI.summary_antonym
+  - YahooDictAPI.summary_variation
+  - YahooDictAPI.defition
+
+Useful Function
++++++++++++++++
+  - YahooDictAPI(word,[space2add=True,url_prefix=[default]])
+  - YahooDictAPI.found()
+others please read code or help(yahdict)
