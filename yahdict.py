@@ -36,6 +36,7 @@ class YahooDictAPI:
             self.summary = self.soup.find(attrs={"id":"summary-card"})
             self.defition = self.soup.find_all(attrs={"class":"def clr nobr"})
             
+            self.summary_word = self.summary.find("div","theme clr").h3.a.contents[0]
             self.summary_desc = self.summary.find("div","description").p.contents[0]
             self.summary_pron = self.get_pron()
             self.summary_related = self.get_related()
@@ -49,6 +50,14 @@ class YahooDictAPI:
             return False,if no word be found.
         """
         return not "zrpmsg" in str(self.msg)
+    
+    def autocorrect(self):
+        """
+            return True,if word be correct autoly.
+        """
+        if self.msg == None :
+            return False
+        return "dym" in str(self.msg)
 
     def get_pron(self):
         res = self.summary.find("div","pronunciation")
@@ -133,6 +142,7 @@ class YahooDictAPI:
 """
 if __name__ == "__main__":
     d = YahooDictAPI('attend')
+    print d.summary_word
     print d.summary_desc
     print d.summary_pron
     print d.summary_related

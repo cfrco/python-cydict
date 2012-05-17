@@ -43,6 +43,7 @@ About API (yahdict.py)
 Field
 ++++++
   - YahooDictAPI.summary
+  - YahooDictAPI.summary_word
   - YahooDictAPI.summary_desc
   - YahooDictAPI.summary_pron
   - YahooDictAPI.summary_related
@@ -55,4 +56,5 @@ Useful Function
 +++++++++++++++
   - YahooDictAPI(word,[space2add=True,url_prefix=[default]])
   - YahooDictAPI.found()
+  - YahooDictAPI.autocorrect()
 others please read code or help(yahdict)

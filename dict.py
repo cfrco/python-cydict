@@ -19,6 +19,9 @@ def parser_init():
     return parser
 
 def print_word(dic,verbose):
+    
+    if dic.autocorrect() :
+        print "[!] auto correct"
 
     if verbose :
         #summary-description
@@ -32,7 +35,7 @@ def print_word(dic,verbose):
             print "    DJ : "+dic.summary_pron["dj"]
             print '' 
     else :
-        print word+ " : "+dic.summary_desc
+        print dic.summary_word+ " : "+dic.summary_desc
         print "KK : "+dic.summary_pron["kk"]+" | DJ : "+dic.summary_pron["dj"]
         print '' 
     
